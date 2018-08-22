@@ -1,8 +1,7 @@
 <%@page isELIgnored="false" %>
 <html>
 <body>
-<h1>${hello}</h1>
-
+q
 <form name="bmiForm" action="bmi" method="POST">
     <table>
         <tr>
@@ -16,7 +15,7 @@
         <th><input type="submit" value="Submit" name="find"/></th>
         <th><input type="reset" value="Reset" name="reset"/></th>
     </table>
-    <h2>${bmi}</h2>
+    <h2>${bmiResult}</h2>
 </form>
 
 </body>

@@ -8,6 +8,7 @@ import java.io.IOException;
 
 @WebServlet(name = "BMIServlet", urlPatterns = "/bmi")
 public class BMIServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,7 +21,9 @@ public class BMIServlet extends HttpServlet {
                     Double.parseDouble(weight),
                     Double.parseDouble(height));
 
-            request.setAttribute("bmi", bmi);
+            String bmiResult = estimateRMI(bmi);
+
+            request.setAttribute("bmiResult", bmiResult);
             response.setHeader("Test", "Success");
             response.setHeader("BMI", String.valueOf(bmi));
 
@@ -36,6 +39,25 @@ public class BMIServlet extends HttpServlet {
         return weight / (height * height);
     }
 
+    private String estimateRMI(double bmi) {
+        String result = "";
+        if(bmi < 18.5) {
+            result = "Skinny";
+        } else if(bmi < 25) {
+            result = "Normal";
+        } else if(bmi < 30) {
+            result = "Obesity intention";
+        } else if(bmi < 35) {
+            result = "Obesity 1";
+        } else if(bmi < 40) {
+            result = "Obesity 2";
+        } else {
+            result = "Obesity";
+        }
+        return result;
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
