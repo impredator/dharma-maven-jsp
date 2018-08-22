@@ -1,7 +1,8 @@
-<%@page isELIgnored="false" %>
+<%@page contentType="text/html; UTF-8" isELIgnored="false" %>
 <html>
 <body>
-q
+<h1>${hello}</h1>
+
 <form name="bmiForm" action="bmi" method="POST">
     <table>
         <tr>
